@@ -24,6 +24,8 @@ namespace CortanaDemo.UWP
 
         public WindowsEditorPage1(string InitialText) : base(InitialText)
         {
+            Debug.WriteLine("OnCancelClicked");
+
 
             rec = new SpeechRecognizer();
             dispatcher = CoreWindow.GetForCurrentThread().Dispatcher;
@@ -41,7 +43,15 @@ namespace CortanaDemo.UWP
             rec.ContinuousRecognitionSession.Completed += OnRecognitionSessionCompleted;
             rec.ContinuousRecognitionSession.ResultGenerated += OnRecognitionSessionResultGenerated;
             rec.HypothesisGenerated += OnRecognationHypothesisGenerated;
+            rec.UIOptions.ShowConfirmation = true;
 
+            rec.StateChanged += RecOnStateChanged;
+
+        }
+
+        private void RecOnStateChanged(SpeechRecognizer sender, SpeechRecognizerStateChangedEventArgs args)
+        {
+           Debug.WriteLine("Speech recognition state = {0}", args.State.ToString());
         }
 
         public static WindowsEditorPage1 GetWindowsEditorPage(string InitialText)
@@ -51,6 +61,9 @@ namespace CortanaDemo.UWP
 
         public async void OnStartClicked(Object sender, EventArgs args)
         {
+
+            Debug.WriteLine("OnStartClicked");
+
 
             if (grammar == null)
                 grammar = await rec.CompileConstraintsAsync();
@@ -75,6 +88,7 @@ namespace CortanaDemo.UWP
 
         public async void OnStopClicked(Object sender, EventArgs args)
         {
+            Debug.WriteLine("OnStopClicked");
 
             if (rec.State != SpeechRecognizerState.Idle)
             {
@@ -91,6 +105,7 @@ namespace CortanaDemo.UWP
 
         public async void OnCancelClicked(Object sender, EventArgs args)
         {
+            Debug.WriteLine("OnCancelClicked");
 
             if (rec.State != SpeechRecognizerState.Idle)
             {
@@ -105,6 +120,7 @@ namespace CortanaDemo.UWP
 
             await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
+                Debug.WriteLine("RunAsync");
                 EditControl.Text = originalEditorText;
             });
 
@@ -149,11 +165,9 @@ namespace CortanaDemo.UWP
 
             Debug.WriteLine("Hypotheses generated = " + args.Hypothesis.Text);
 
-            
-
             await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                EditControl.Text = originalEditorText + args.Hypothesis.Text + "...";
+                EditControl.Text = originalEditorText + dictatedText.ToString() + args.Hypothesis.Text + "...";
             });
         }
     }

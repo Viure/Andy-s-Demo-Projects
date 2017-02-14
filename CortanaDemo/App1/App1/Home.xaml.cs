@@ -11,7 +11,7 @@ namespace CortanaDemo
     public partial class Home : ContentPage
     {
 
-        public delegate ContentPage GetEditorInstance(string InitialEditorText);
+        public delegate EditorPage GetEditorInstance(string InitialEditorText);
         static public GetEditorInstance EditorFactory;
        
         public Home()

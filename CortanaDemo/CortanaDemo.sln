@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CortanaDemo.Droid", "App1\App1.Droid\CortanaDemo.Droid.csproj", "{AA5C33E7-4127-4757-B679-A6D31147CD8F}"
 EndProject
@@ -180,8 +180,6 @@ Global
 		{96DD70D4-D5CF-4F4F-B6EE-A526668CFB37}.AppStore|x86.Build.0 = Release|x86
 		{96DD70D4-D5CF-4F4F-B6EE-A526668CFB37}.AppStore|x86.Deploy.0 = Release|x86
 		{96DD70D4-D5CF-4F4F-B6EE-A526668CFB37}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{96DD70D4-D5CF-4F4F-B6EE-A526668CFB37}.Debug|Any CPU.Build.0 = Debug|x86
-		{96DD70D4-D5CF-4F4F-B6EE-A526668CFB37}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{96DD70D4-D5CF-4F4F-B6EE-A526668CFB37}.Debug|ARM.ActiveCfg = Debug|ARM
 		{96DD70D4-D5CF-4F4F-B6EE-A526668CFB37}.Debug|ARM.Build.0 = Debug|ARM
 		{96DD70D4-D5CF-4F4F-B6EE-A526668CFB37}.Debug|ARM.Deploy.0 = Debug|ARM
